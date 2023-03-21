@@ -135,22 +135,46 @@ func GetPosFromF(f DTF, startDate, date string, interval time.Duration) (int64, 
 	return int64(pos), nil
 }
 
-func Count(f DTF, startDate, endDate string, interval time.Duration) (int64, error) {
-	t1, err := time.Parse(f.String(), startDate)
-	if err != nil {
-		return -1, err
-	}
-	t2, err := time.Parse(f.String(), endDate)
-	if err != nil {
-		return -1, err
-	}
-	if t2.Before(t1) {
-		return -1, fmt.Errorf("endDate is before startDate")
+func GetPosFromTimeF(f DTF, startDate, date time.Time, interval time.Duration) (int64, error) {
+	if date.Before(startDate) {
+		return -1, fmt.Errorf("date is before startDate")
 	}
 	if interval == 0 {
 		return -1, fmt.Errorf("`interval` parameter is zero")
 	}
+	d := date.Sub(startDate)
+	pos := d / interval
+	return int64(pos), nil
+}
+
+func Count(f DTF, startDate, endDate string, interval time.Duration) (int64, error) {
+	t1, err := time.Parse(f.String(), startDate)
+	if err != nil {
+		return 0, err
+	}
+	t2, err := time.Parse(f.String(), endDate)
+	if err != nil {
+		return 0, err
+	}
+	if t2.Before(t1) {
+		return 0, fmt.Errorf("endDate is before startDate")
+	}
+	if interval == 0 {
+		return 0, fmt.Errorf("`interval` parameter is zero")
+	}
 	d := t2.Sub(t1)
+	pos := d / interval
+	return int64(pos) + 1, nil
+}
+
+func CountFromTime(f DTF, startDate, endDate time.Time, interval time.Duration) (int64, error) {
+	if endDate.Before(startDate) {
+		return 0, fmt.Errorf("endDate is before startDate")
+	}
+	if interval == 0 {
+		return -1, fmt.Errorf("`interval` parameter is zero")
+	}
+	d := endDate.Sub(startDate)
 	pos := d / interval
 	return int64(pos) + 1, nil
 }
