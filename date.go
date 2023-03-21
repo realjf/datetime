@@ -22,7 +22,7 @@ const (
 	F_YYYYMM_hyphen          DTF = "2006-01"
 	F_YYYYMMDD_hyphen        DTF = "2006-01-02"
 	F_YYYYMMDDhhmm_hyphen    DTF = "2006-01-02 15:04"
-	F_YYYYMMDDhhmmss_hyphen  DTF = "2006-01/02 15:04:05"
+	F_YYYYMMDDhhmmss_hyphen  DTF = "2006-01-02 15:04:05"
 	F_YYYY_chinese           DTF = "2006年"
 	F_YYYYMM_chinese         DTF = "2006年01月"
 	F_YYYYMMDD_chinese       DTF = "2006年01月02日"
