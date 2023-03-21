@@ -29,8 +29,8 @@ func main() {
 	fmt.Printf("16:04:04 -> %s\n", t4)
 	t5, _ := datetimeutil.AddDuration(datetimeutil.F_hhmmss_colon, "16:04:04", time.Hour*1)
 	fmt.Printf("16:04:04 -- +1 hour --> %s\n", t5)
-	t6, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
-	fmt.Printf("20230325 distance to 20230321: %d days\n", t6+1)
-	t7, _ := datetimeutil.Count(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
-	fmt.Printf("from 20230325 to 20230321: %d days\n", t7)
+	t6, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(24)*time.Hour)
+	fmt.Printf("from 20230321, 20230325 offset: %d\n", t6)
+	t7, _ := datetimeutil.Count(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(24)*time.Hour)
+	fmt.Printf("from 20230321 to 20230325: %d days\n", t7)
 }
