@@ -172,7 +172,7 @@ func CountFromTime(f DTF, startDate, endDate time.Time, interval time.Duration) 
 		return 0, fmt.Errorf("endDate is before startDate")
 	}
 	if interval == 0 {
-		return -1, fmt.Errorf("`interval` parameter is zero")
+		return 0, fmt.Errorf("`interval` parameter is zero")
 	}
 	d := endDate.Sub(startDate)
 	pos := d / interval
