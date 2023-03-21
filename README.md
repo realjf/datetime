@@ -26,16 +26,19 @@ func main() {
  fmt.Printf("2023/03/03 -> %s\n", t1)
  u1, _ := datetimeutil.ParseDate2Unix(datetimeutil.F_YYYYMMDD_hyphen, "2023-03-03")
  fmt.Printf("2023-03-03 -> %d\n", u1)
-
+ t2, _ := datetimeutil.ParseDate2Time(datetimeutil.F_YYYYMMDD, "20230303")
+ fmt.Printf("2023-03-03 -> %v\n", t2)
  fmt.Println(datetimeutil.GetTime())
  fmt.Println(datetimeutil.GetTimeF(datetimeutil.F_hhmmss))
  fmt.Println(datetimeutil.GetTimeF(datetimeutil.F_hhmmss_chinese))
- t2, _ := datetimeutil.GetTimeFromF(datetimeutil.F_hhmmss_colon, "16:04:04", datetimeutil.F_hhmmss_chinese)
- fmt.Printf("16:04:04 -> %s\n", t2)
- t3, _ := datetimeutil.AddDuration(datetimeutil.F_hhmmss_colon, "16:04:04", time.Hour*1)
- fmt.Printf("16:04:04 -- +1 hour --> %s\n", t3)
- t4, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
- fmt.Printf("20230325 distance to 20230321: %d days", t4+1)
+ t4, _ := datetimeutil.GetTimeFromF(datetimeutil.F_hhmmss_colon, "16:04:04", datetimeutil.F_hhmmss_chinese)
+ fmt.Printf("16:04:04 -> %s\n", t4)
+ t5, _ := datetimeutil.AddDuration(datetimeutil.F_hhmmss_colon, "16:04:04", time.Hour*1)
+ fmt.Printf("16:04:04 -- +1 hour --> %s\n", t5)
+ t6, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
+ fmt.Printf("20230325 distance to 20230321: %d days\n", t6+1)
+ t7, _ := datetimeutil.Count(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
+ fmt.Printf("from 20230325 to 20230321: %d days\n", t7)
 }
 ```
 
@@ -46,15 +49,17 @@ the follow is output:
 2023/03/21
 2023-03-21
 2023年03月21日
-2023/03/21 18:20
-2023-03-21 18:20
-2023年03月21日 18:20
+2023/03/21 23:09
+2023-03-21 23:09
+2023年03月21日 23:09
 2023/03/03 -> 2023/03/07
 2023-03-03 -> 1677801600
-18:20:39
-18:20:39
-18时20分39秒
+2023-03-03 -> 2023-03-03 00:00:00 +0000 UTC
+23:09:10
+230910
+23时09分10秒
 16:04:04 -> 16时04分04秒
 16:04:04 -- +1 hour --> 17:04:04
-20230325 distance to 20230321: 4 days
+20230325 distance to 20230321: 5 days
+from 20230325 to 20230321: 5 days
 ```
