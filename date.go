@@ -1,6 +1,9 @@
 package datetimeutil
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type DTF string
 
@@ -103,4 +106,27 @@ func AddDays2Time(f DTF, date string, days int) (time.Time, error) {
 	}
 	t = t.Add(time.Duration(days*86400) * time.Second)
 	return t, nil
+}
+
+// returns the specified time distance from the start time period position
+// the pos start from 0
+// if returns -1 means error
+func GetPosFromF(f DTF, startDate, date string, interval time.Duration) (int64, error) {
+	t1, err := time.Parse(f.String(), startDate)
+	if err != nil {
+		return -1, err
+	}
+	t2, err := time.Parse(f.String(), date)
+	if err != nil {
+		return -1, err
+	}
+	if t2.Before(t1) {
+		return -1, fmt.Errorf("date is before fromdate")
+	}
+	if interval == 0 {
+		return -1, fmt.Errorf("`interval` parameter is zero")
+	}
+	d := t2.Sub(t1)
+	pos := d / interval
+	return int64(pos), err
 }

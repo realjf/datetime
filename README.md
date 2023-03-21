@@ -34,6 +34,8 @@ func main() {
  fmt.Printf("16:04:04 -> %s\n", t2)
  t3, _ := datetimeutil.AddDuration(datetimeutil.F_hhmmss_colon, "16:04:04", time.Hour*1)
  fmt.Printf("16:04:04 -- +1 hour --> %s\n", t3)
+ t4, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
+ fmt.Printf("20230325 distance to 20230321: %d days", t4+1)
 }
 ```
 
@@ -54,4 +56,5 @@ the follow is output:
 18时20分39秒
 16:04:04 -> 16时04分04秒
 16:04:04 -- +1 hour --> 17:04:04
+20230325 distance to 20230321: 4 days
 ```
