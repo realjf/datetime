@@ -23,7 +23,7 @@ func TestTime(t *testing.T) {
 		},
 		"GetTimeFrom": {
 			p: func(name string) {
-				tm, err := datetimeutil.GetTimeFrom(datetimeutil.F_YYYYMMDDhhmmss, "20230321040506", datetimeutil.F_hhmmss_chinese)
+				tm, err := datetimeutil.GetTimeFromF(datetimeutil.F_YYYYMMDDhhmmss, "20230321040506", datetimeutil.F_hhmmss_chinese)
 				if err != nil {
 					t.Errorf("%s: %v", name, err)
 				}

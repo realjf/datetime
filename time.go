@@ -23,7 +23,7 @@ func GetTimeF(f DTF) string {
 }
 
 // return f2 format
-func GetTimeFrom(f DTF, date string, f2 DTF) (string, error) {
+func GetTimeFromF(f DTF, date string, f2 DTF) (string, error) {
 	t, err := time.Parse(f.String(), date)
 	if err != nil {
 		return "", err
