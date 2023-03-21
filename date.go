@@ -54,6 +54,10 @@ func ParseDate(f DTF, date string) (string, error) {
 	return t.Format(F_YYYYMMDD.String()), nil
 }
 
+func ParseDateFromTime(f DTF, t time.Time) string {
+	return t.Format(f.String())
+}
+
 // return time.Time
 func ParseDate2Time(f DTF, date string) (time.Time, error) {
 	return time.Parse(f.String(), date)
