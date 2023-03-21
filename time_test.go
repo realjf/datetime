@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	datetimeutil "github.com/realjf/datetime"
+	"github.com/realjf/datetimeutil"
 )
 
 func TestTime(t *testing.T) {

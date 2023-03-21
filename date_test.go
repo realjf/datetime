@@ -3,7 +3,7 @@ package datetimeutil_test
 import (
 	"testing"
 
-	datetimeutil "github.com/realjf/datetime"
+	"github.com/realjf/datetimeutil"
 )
 
 func TestDateTime(t *testing.T) {

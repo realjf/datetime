@@ -1,3 +1,3 @@
-module github.com/realjf/datetime
+module github.com/realjf/datetimeutil
 
 go 1.20

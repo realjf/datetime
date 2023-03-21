@@ -1,4 +1,4 @@
-# datetime
+# datetimeutil
 
 datetime util in go(日期时间工具集)
 
@@ -10,7 +10,7 @@ import (
  "fmt"
  "time"
 
- datetimeutil "github.com/realjf/datetime"
+ "github.com/realjf/datetimeutil"
 )
 
 func main() {

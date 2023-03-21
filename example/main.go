@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	datetimeutil "github.com/realjf/datetime"
+	"github.com/realjf/datetimeutil"
 )
 
 func main() {
