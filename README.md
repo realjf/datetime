@@ -37,9 +37,9 @@ func main() {
  fmt.Printf("16:04:04 -- +1 hour --> %s\n", t5)
  t6, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(24)*time.Hour, true)
  fmt.Printf("from 20230321, 20230325 offset: %d\n", t6)
- t7, _ := datetimeutil.Count(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(24)*time.Hour, true)
+ t7, _ := datetimeutil.Count(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(24)*time.Hour)
  fmt.Printf("from 20230321 to 20230325: %d days\n", t7)
- t8, _ := datetimeutil.CountFromTime(datetimeutil.F_YYYYMMDD, t2, time.Now(), time.Duration(24)*time.Hour, true)
+ t8, _ := datetimeutil.CountFromTime(datetimeutil.F_YYYYMMDD, t2, time.Now(), time.Duration(24)*time.Hour)
  fmt.Printf("from %v to %v: %d days\n", t2, time.Now(), t8)
 }
 ```
@@ -51,18 +51,18 @@ the follow is output:
 2023/03/22
 2023-03-22
 2023年03月22日
-2023/03/22 03:53
-2023-03-22 03:53
-2023年03月22日 03:53
+2023/03/22 13:56
+2023-03-22 13:56
+2023年03月22日 13:56
 2023/03/03 -> 2023/03/07
 2023-03-03 -> 1677801600
 2023-03-03 -> 2023-03-03 00:00:00 +0000 UTC
-03:53:15
-035315
-03时53分15秒
+13:56:59
+135659
+13时56分59秒
 16:04:04 -> 16时04分04秒
 16:04:04 -- +1 hour --> 17:04:04
 from 20230321, 20230325 offset: 4
 from 20230321 to 20230325: 5 days
-from 2023-03-03 00:00:00 +0000 UTC to 2023-03-22 03:53:15.805532274 +0800 CST m=+0.000119513: 20 days
+from 2023-03-03 00:00:00 +0000 UTC to 2023-03-22 13:56:59.611663368 +0800 CST m=+0.000145461: 20 days
 ```
