@@ -32,7 +32,7 @@ func TestDateTime(t *testing.T) {
 		},
 		"GetPosFromF": {
 			p: func(name string) {
-				tm, err := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
+				tm, err := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour, true)
 				if err != nil {
 					t.Errorf("%s: %v", name, err)
 				}

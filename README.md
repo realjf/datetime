@@ -35,31 +35,34 @@ func main() {
  fmt.Printf("16:04:04 -> %s\n", t4)
  t5, _ := datetimeutil.AddDuration(datetimeutil.F_hhmmss_colon, "16:04:04", time.Hour*1)
  fmt.Printf("16:04:04 -- +1 hour --> %s\n", t5)
- t6, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
- fmt.Printf("20230325 distance to 20230321: %d days\n", t6+1)
- t7, _ := datetimeutil.Count(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(1*24)*time.Hour)
- fmt.Printf("from 20230325 to 20230321: %d days\n", t7)
+ t6, _ := datetimeutil.GetPosFromF(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(24)*time.Hour, true)
+ fmt.Printf("from 20230321, 20230325 offset: %d\n", t6)
+ t7, _ := datetimeutil.Count(datetimeutil.F_YYYYMMDD, "20230321", "20230325", time.Duration(24)*time.Hour, true)
+ fmt.Printf("from 20230321 to 20230325: %d days\n", t7)
+ t8, _ := datetimeutil.CountFromTime(datetimeutil.F_YYYYMMDD, t2, time.Now(), time.Duration(24)*time.Hour, true)
+ fmt.Printf("from %v to %v: %d days\n", t2, time.Now(), t8)
 }
 ```
 
 the follow is output:
 
 ```sh
-20230321
-2023/03/21
-2023-03-21
-2023年03月21日
-2023/03/21 23:09
-2023-03-21 23:09
-2023年03月21日 23:09
+20230322
+2023/03/22
+2023-03-22
+2023年03月22日
+2023/03/22 03:53
+2023-03-22 03:53
+2023年03月22日 03:53
 2023/03/03 -> 2023/03/07
 2023-03-03 -> 1677801600
 2023-03-03 -> 2023-03-03 00:00:00 +0000 UTC
-23:09:10
-230910
-23时09分10秒
+03:53:15
+035315
+03时53分15秒
 16:04:04 -> 16时04分04秒
 16:04:04 -- +1 hour --> 17:04:04
-20230325 distance to 20230321: 5 days
-from 20230325 to 20230321: 5 days
+from 20230321, 20230325 offset: 4
+from 20230321 to 20230325: 5 days
+from 2023-03-03 00:00:00 +0000 UTC to 2023-03-22 03:53:15.805532274 +0800 CST m=+0.000119513: 20 days
 ```
