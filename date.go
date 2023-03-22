@@ -155,7 +155,7 @@ func GetPosFromTimeF(f DTF, startDate, date time.Time, interval time.Duration, c
 	return int64(pos), nil
 }
 
-func Count(f DTF, startDate, endDate string, interval time.Duration, ceil bool) (int64, error) {
+func Count(f DTF, startDate, endDate string, interval time.Duration) (int64, error) {
 	t1, err := time.Parse(f.String(), startDate)
 	if err != nil {
 		return 0, err
@@ -172,14 +172,10 @@ func Count(f DTF, startDate, endDate string, interval time.Duration, ceil bool) 
 	}
 	d := t2.Sub(t1)
 	pos := d / interval
-	mod := d - interval*pos
-	if ceil && mod > 0 {
-		return int64(pos) + 2, nil
-	}
 	return int64(pos) + 1, nil
 }
 
-func CountFromTime(f DTF, startDate, endDate time.Time, interval time.Duration, ceil bool) (int64, error) {
+func CountFromTime(f DTF, startDate, endDate time.Time, interval time.Duration) (int64, error) {
 	if endDate.Before(startDate) {
 		return 0, fmt.Errorf("endDate is before startDate")
 	}
@@ -188,9 +184,5 @@ func CountFromTime(f DTF, startDate, endDate time.Time, interval time.Duration, 
 	}
 	d := endDate.Sub(startDate)
 	pos := d / interval
-	mod := d - interval*pos
-	if ceil && mod > 0 {
-		return int64(pos) + 2, nil
-	}
 	return int64(pos) + 1, nil
 }
